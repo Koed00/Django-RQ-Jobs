@@ -66,7 +66,7 @@ def task_list():
 
 
 class Job(models.Model):
-    task = models.CharField(max_length=200, choices=task_list())
+    task = models.CharField(max_length=200)
     args = models.CharField(max_length=255, null=True, blank=True)
     ONCE = 'O'
     HOURLY = 'H'
@@ -133,4 +133,4 @@ class Job(models.Model):
         verbose_name_plural = _("Scheduled jobs")
 
     def __unicode__(self):
-        return self.get_task_display()
+        return self.task
