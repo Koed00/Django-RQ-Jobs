@@ -27,7 +27,7 @@ class Command(BaseCommand):
             job.rq_id = rq.id
             job.rq_origin = rq.origin
             job.last_run = arrow.utcnow().datetime
-            self.stdout.write(_('* Queueing {} on {}.').format(job.get_task_display(), job.rq_origin), ending=' ')
+            self.stdout.write(_('* Queueing {} on {}.').format(job.task, job.rq_origin), ending=' ')
             if job.schedule_type != Job.ONCE:
                 if job.repeats < 0 or job.repeats > 1:
                     next_run = arrow.get(job.next_run)
